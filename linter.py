@@ -21,7 +21,6 @@ logger = logging.getLogger('SublimeLinter.plugin.embertemplatelint')
 class EmberTemplateLint(NodeLinter):
     """Provides an interface to the ember template linter executable."""
 
-    npm_name = 'embertemplatelint'
     cmd = 'ember-template-lint ${file} --json'
 
     missing_config_regex = re.compile(
@@ -81,25 +80,6 @@ class EmberTemplateLint(NodeLinter):
                     match['message'],
                     None  # near
                 )
-
-    def reposition_match(self, line, col, m, vv):
-        match = m.match
-        if (
-            col is None or
-            'endLine' not in match or
-            'endColumn' not in match
-        ):
-            return super().reposition_match(line, col, m, vv)
-
-        # apply line_base manually
-        end_line = match['endLine'] - 1
-        end_column = match['endColumn']
-
-        for _line in range(line, end_line):
-            text = vv.select_line(_line)
-            end_column += len(text)
-
-        return line, col, end_column
 
     def run(self, cmd, code):
         return super().run(cmd, code)
