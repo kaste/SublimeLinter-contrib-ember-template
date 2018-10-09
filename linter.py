@@ -71,13 +71,10 @@ class EmberTemplateLint(NodeLinter):
 
                 column = match.get('column', None)
                 ruleId = match.get('rule', '')
-                if column is not None:
-                    # apply line_col_base manually
-                    column = column - 1
 
                 yield (
                     match,
-                    match['line'],  # apply line_col_base manually
+                    match['line'] - 1,  # apply line_col_base manually
                     column,
                     ruleId if match['severity'] == 2 else '',
                     ruleId if match['severity'] == 1 else '',
@@ -94,9 +91,9 @@ class EmberTemplateLint(NodeLinter):
         ):
             return super().reposition_match(line, col, m, vv)
 
-        # apply line_col_base manually
+        # apply line_base manually
         end_line = match['endLine'] - 1
-        end_column = match['endColumn'] - 1
+        end_column = match['endColumn']
 
         for _line in range(line, end_line):
             text = vv.select_line(_line)
