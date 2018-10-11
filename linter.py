@@ -20,14 +20,25 @@ logger = logging.getLogger('SublimeLinter.plugin.embertemplatelint')
 
 class EmberTemplateLint(NodeLinter):
     """Provides an interface to the ember template linter executable."""
-
-    cmd = 'ember-template-lint ${file} --json'
+    cmd = 'ember-template-lint ${file}'
 
     missing_config_regex = re.compile(
         r'^(.*?)\r?\n\w*(Ember template linter couldn\'t find a configuration file.)',
         re.DOTALL
     )
-    line_col_base = (1, 1)
+    regex = (
+        r'.+?'
+        r'(?P<line>\d+):(?P<col>\d+)'
+        r'\s+('
+        r'(?P<error>error)'
+        r'|'
+        r'(?P<warning>warining)'
+        r')\s+'
+        r'(?P<message>.*)'
+        r'\s+'
+        r'(?P<ruleId>.*)'
+    )
+    line_col_base = (1, 0)
     defaults = {
         'selector': 'text.html.handlebars'
     }
@@ -46,40 +57,3 @@ class EmberTemplateLint(NodeLinter):
         else:
             logger.error(stderr)
             self.notify_failure()
-
-    def find_errors(self, output):
-        """Parse errors from linter's output."""
-        try:
-            content = json.loads(output)
-        except ValueError:
-            logger.error(
-                "JSON Decode error: We expected JSON from 'ember-template-lint', "
-                "but instead got this:\n{}\n\n"
-                "output.".format(output))
-            self.notify_failure()
-            return
-
-        if logger.isEnabledFor(logging.INFO):
-            import pprint
-            logger.info(
-                '{} output:\n{}'.format(self.name, pprint.pformat(content)))
-
-        for match in content[self.filename]:
-                if match['message'].startswith('File ignored'):
-                    continue
-
-                column = match.get('column', None)
-                ruleId = match.get('rule', '')
-
-                yield (
-                    match,
-                    match['line'] - 1,  # apply line_col_base manually
-                    column,
-                    ruleId if match['severity'] == 2 else '',
-                    ruleId if match['severity'] == 1 else '',
-                    match['message'],
-                    None  # near
-                )
-
-    def run(self, cmd, code):
-        return super().run(cmd, code)
