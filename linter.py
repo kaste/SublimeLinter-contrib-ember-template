@@ -59,7 +59,6 @@ class EmberTemplateLint(NodeLinter):
             self.notify_failure()
 
     def split_match(self, match):
-        """Return the components of the error."""
         match, line, col, error, warning, message, near = super().split_match(match)
         ruleId = match.group("ruleId")
 
