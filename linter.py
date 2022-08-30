@@ -9,7 +9,7 @@
 
 """This module exports the Ember Template Linter plugin class."""
 import re
-from SublimeLinter.lint import NodeLinter 
+from SublimeLinter.lint import NodeLinter
 
 
 class EmberTemplateLint(NodeLinter):
