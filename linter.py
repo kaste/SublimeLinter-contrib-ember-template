@@ -66,6 +66,9 @@ class EmberTemplateLint(NodeLinter):
 
     def find_errors(self, output):
         """Parse errors from linter's output."""
+        if not output.strip():
+            return
+
         try:
             content = json.loads(output)
         except ValueError:
