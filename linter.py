@@ -1,10 +1,8 @@
-
+# Linter for SublimeLinter, a code checking framework for Sublime Text
 #
-# linter.py
-# Linter for SublimeLinter3, a code checking framework for Sublime Text 3
-#
-# Written by roadhump
-# Copyright (c) 2014 roadhump
+# Written by raphaelns-developer and kaste
+# Copyright (c) 2018 raphaelns
+# Copyright (c) 2022 kaste
 #
 # License: MIT
 #
