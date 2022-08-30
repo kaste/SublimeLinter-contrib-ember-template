@@ -25,11 +25,7 @@ class EmberTemplateLint(NodeLinter):
     regex = (
         r'.+?'
         r'(?P<line>\d+):(?P<col>\d+)'
-        r'\s+('
-        r'(?P<error>error)'
-        r'|'
-        r'(?P<warning>warning)'
-        r')\s+'
+        r'\s+(?P<error_type>\S+)\s+'
         r'(?P<message>.*)'
         r'\s+'
         r'(?P<code>.*)'
