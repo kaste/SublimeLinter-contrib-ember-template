@@ -10,8 +10,6 @@
 #
 
 """This module exports the Ember Template Linter plugin class."""
-import json
-import os
 import re
 from SublimeLinter.lint import NodeLinter 
 
