@@ -23,10 +23,3 @@ But newer ember apps have it preinstalled.
 Note that `ember-template-lint` *requires* a configuration file but does *not*
 error if it can't find any!  (So it can look like you're green and everything
 is okay to commit when in fact it didn't do anything.)
-
-
-In order for `ember-template-linter` to be executed by SublimeLinter, you must ensure that its path is available to SublimeLinter. The docs cover [troubleshooting PATH configuration](http://sublimelinter.readthedocs.io/en/latest/troubleshooting.html#finding-a-linter-executable).
-
-## Settings
-- SublimeLinter settings: http://sublimelinter.readthedocs.org/en/latest/settings.html
-- Linter settings: http://sublimelinter.readthedocs.org/en/latest/linter_settings.html
