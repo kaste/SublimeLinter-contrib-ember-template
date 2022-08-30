@@ -1,7 +1,7 @@
 SublimeLinter-contrib-ember-template-linter
 ================================
+[![tests](https://github.com/kaste/SublimeLinter-contrib-ember-template/actions/workflows/ci.yml/badge.svg)](https://github.com/kaste/SublimeLinter-contrib-ember-template/actions/workflows/ci.yml)
 
-[![Build Status](https://travis-ci.org/SublimeLinter/SublimeLinter-contrib-ember-template-linter.svg?branch=master)](https://travis-ci.org/SublimeLinter/SublimeLinter-contrib-ember-template-linter)
 
 This linter plugin for [SublimeLinter](https://github.com/SublimeLinter/SublimeLinter) provides an interface to [ember-template-linter](https://github.com/ember-template-lint/ember-template-lint). It will be used with files that have the “handlebars” syntax.
 
