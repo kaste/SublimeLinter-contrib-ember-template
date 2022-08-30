@@ -1,6 +1,7 @@
 SublimeLinter-contrib-ember-template-linter
--------------------------------
+-------------------------------------------
+
 This linter plugin for SublimeLinter provides an interface to ember-template-linter.
 
 For more information, please see:
-https://github.com/raphaelns-developer/SublimeLinter-ember-template-linter
+https://github.com/kaste/SublimeLinter-ember-template-linter
