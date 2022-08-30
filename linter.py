@@ -10,7 +10,6 @@
 """This module exports the Ember Template Linter plugin class."""
 from itertools import chain
 import json
-import re
 
 from SublimeLinter.lint import LintMatch, NodeLinter
 
@@ -21,30 +20,14 @@ class EmberTemplateLint(NodeLinter):
     """Provides an interface to the ember template linter executable."""
     name = 'ember-template'
     cmd = 'ember-template-lint --format=json $args -'
-
-    missing_config_regex = re.compile(
-        r'^(.*?)\r?\n\w*(Ember template linter couldn\'t find a configuration file.)',
-        re.DOTALL
-    )
     defaults = {
         'selector': 'text.html.handlebars',
         '--filename': '${file}',
     }
 
     def on_stderr(self, stderr):
-        # Demote 'annoying' config is missing error to a warning.
-        if self.missing_config_regex.match(stderr):
-            self.logger.warning(stderr)
-            self.notify_failure()
-        elif (
-            'DeprecationWarning' in stderr or
-            'ExperimentalWarning' in stderr or
-            'in the next version' in stderr  # is that a proper deprecation?
-        ):
-            self.logger.warning(stderr)
-        else:
-            self.logger.error(stderr)
-            self.notify_failure()
+        self.logger.error(stderr)
+        self.notify_failure()
 
     """
       {
