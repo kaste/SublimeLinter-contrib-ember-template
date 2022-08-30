@@ -28,7 +28,7 @@ class EmberTemplateLint(NodeLinter):
         r'\s+('
         r'(?P<error>error)'
         r'|'
-        r'(?P<warning>warining)'
+        r'(?P<warning>warning)'
         r')\s+'
         r'(?P<message>.*)'
         r'\s+'
