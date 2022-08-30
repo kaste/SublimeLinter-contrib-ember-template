@@ -1,5 +1,6 @@
-SublimeLinter-contrib-ember-template-linter
-================================
+SublimeLinter-contrib-ember-template
+====================================
+
 [![tests](https://github.com/kaste/SublimeLinter-contrib-ember-template/actions/workflows/ci.yml/badge.svg)](https://github.com/kaste/SublimeLinter-contrib-ember-template/actions/workflows/ci.yml)
 
 
@@ -10,19 +11,19 @@ SublimeLinter must be installed in order to use this plugin.
 
 Please use [Package Control](https://packagecontrol.io) to install the linter plugin.
 
-Before using this plugin, ensure that `ember-template-linter` is installed on your system.
-To install `ember-template-linter`, do the following:
+Before using this plugin, ensure that `ember-template-lint` is installed on your system.
+To install `ember-template-lint`, do the following:
 
 - Install [Node.js](http://nodejs.org) (and [npm](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager) on Linux).
 
-- Install `ember-template-linter` globally by typing the following in a terminal:
+- Install `ember-template-lint` globally by typing the following in a terminal:
 ```
-npm install -g ember-template-linter
+npm install -g ember-template-lint
 ```
     
-- Or install `ember-template-linter` locally in your project folder (**you must have package.json file there**):
+- Or install `ember-template-lint` locally in your project folder (**you must have package.json file there**):
 ```
-npm install ember-template-linter
+npm install --save-dev ember-template-lint
 ```
 
 
