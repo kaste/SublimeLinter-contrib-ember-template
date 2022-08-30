@@ -16,7 +16,7 @@ from SublimeLinter.lint import NodeLinter
 
 class EmberTemplateLint(NodeLinter):
     """Provides an interface to the ember template linter executable."""
-    cmd = 'ember-template-lint ${file}'
+    cmd = 'ember-template-lint -'
 
     missing_config_regex = re.compile(
         r'^(.*?)\r?\n\w*(Ember template linter couldn\'t find a configuration file.)',
@@ -32,7 +32,8 @@ class EmberTemplateLint(NodeLinter):
     )
     line_col_base = (1, 0)
     defaults = {
-        'selector': 'text.html.handlebars'
+        'selector': 'text.html.handlebars',
+        '--filename': '${file}',
     }
 
     def on_stderr(self, stderr):
