@@ -32,7 +32,7 @@ class EmberTemplateLint(NodeLinter):
         r')\s+'
         r'(?P<message>.*)'
         r'\s+'
-        r'(?P<ruleId>.*)'
+        r'(?P<code>.*)'
     )
     line_col_base = (1, 0)
     defaults = {
@@ -53,9 +53,3 @@ class EmberTemplateLint(NodeLinter):
         else:
             self.logger.error(stderr)
             self.notify_failure()
-
-    def split_match(self, match):
-        match, line, col, error, warning, message, near = super().split_match(match)
-        ruleId = match.group("ruleId")
-
-        return match, line, col, ruleId if error is not None else error, ruleId if warning is not None else warning, message, None
