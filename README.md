@@ -12,19 +12,17 @@ SublimeLinter must be installed in order to use this plugin.
 Please use [Package Control](https://packagecontrol.io) to install the linter plugin.
 
 Before using this plugin, ensure that `ember-template-lint` is installed on your system.
-To install `ember-template-lint`, do the following:
+To install `ember-template-lint`, usually do the following:
 
-- Install [Node.js](http://nodejs.org) (and [npm](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager) on Linux).
-
-- Install `ember-template-lint` globally by typing the following in a terminal:
-```
-npm install -g ember-template-lint
-```
-    
-- Or install `ember-template-lint` locally in your project folder (**you must have package.json file there**):
 ```
 npm install --save-dev ember-template-lint
 ```
+
+But newer ember apps have it preinstalled.
+
+Note that `ember-template-lint` *requires* a configuration file but does *not*
+error if it can't find any!  (So it can look like you're green and everything
+is okay to commit when in fact it didn't do anything.)
 
 
 In order for `ember-template-linter` to be executed by SublimeLinter, you must ensure that its path is available to SublimeLinter. The docs cover [troubleshooting PATH configuration](http://sublimelinter.readthedocs.io/en/latest/troubleshooting.html#finding-a-linter-executable).
