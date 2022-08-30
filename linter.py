@@ -16,6 +16,7 @@ from SublimeLinter.lint import NodeLinter
 
 class EmberTemplateLint(NodeLinter):
     """Provides an interface to the ember template linter executable."""
+    name = 'ember-template'
     cmd = 'ember-template-lint -'
 
     missing_config_regex = re.compile(
